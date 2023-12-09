@@ -11,9 +11,6 @@ import org.fest.assertions.Condition;
 import org.junit.Before;
 import org.junit.Test;
 
-import com.google.common.base.Function;
-import com.google.common.collect.Lists;
-
 public abstract class ResourcesTest
 {
     protected abstract Workspace getWorkspaceToTest() throws Exception;
@@ -501,13 +498,9 @@ public abstract class ResourcesTest
 
     protected List<String> namesOf(List< ? extends Resource> resources)
     {
-        return Lists.transform(resources, new Function<Resource, String>()
-        {
-            public String apply(Resource r)
-            {
-                return r.getName();
-            }
-        });
+        return resources.stream()
+                .map(Resource::getName)
+                .toList();
     }
 
     private String[] none()

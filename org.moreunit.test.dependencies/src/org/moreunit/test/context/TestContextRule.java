@@ -1,6 +1,6 @@
 package org.moreunit.test.context;
 
-import static com.google.common.base.Preconditions.checkState;
+import static org.moreunit.core.util.Preconditions.checkArgument;
 
 import java.lang.annotation.Annotation;
 import java.util.ArrayList;
@@ -98,11 +98,11 @@ public class TestContextRule implements MethodRule
         }
         return b.toString();
     }
- 
+
     /**
      * Returns a handler to manipulate the compilation unit having the given
      * name.
-     * 
+     *
      * @param cuName the name of the compilation unit
      * @return a handler for the compilation unit
      * @throws IllegalArgumentException if no compilation unit exists with the
@@ -116,7 +116,7 @@ public class TestContextRule implements MethodRule
     /**
      * Returns a handler to manipulate the primary type of the given compilation
      * unit.
-     * 
+     *
      * @param cuName the name of the compilation unit
      * @return a handler for the compilation unit's primary type
      * @throws IllegalArgumentException if no compilation unit exists with the
@@ -129,7 +129,7 @@ public class TestContextRule implements MethodRule
 
     /**
      * Returns the compilation unit having the given name.
-     * 
+     *
      * @param cuName the name of the compilation unit
      * @return the compilation unit
      * @throws IllegalArgumentException if no compilation unit exists with the
@@ -145,7 +145,7 @@ public class TestContextRule implements MethodRule
      * the annotation @Context, or using the annotation @Project - assuming no
      * specific name was given to it. If a specific name was given to it, please
      * use {@link #getProjectHandler(String)}.
-     * 
+     *
      * @return a handler for the project
      */
     public ProjectHandler getProjectHandler()
@@ -158,7 +158,7 @@ public class TestContextRule implements MethodRule
      * the annotation @Context, or using the annotation @Project - assuming no
      * specific name was given to it. If a specific name was given to it, please
      * use {@link #getProjectHandler(String)}.
-     * 
+     *
      * @return a handler for the project
      */
     public ProjectHandler getMainProjectHandler()
@@ -171,7 +171,7 @@ public class TestContextRule implements MethodRule
      * using the annotation @TestProject - assuming no specific name was given
      * to it. If a specific name was given to it, please use
      * {@link #getProjectHandler(String)}.
-     * 
+     *
      * @return a handler for the test project
      * @throws IllegalArgumentException if no test project exist
      */
@@ -182,7 +182,7 @@ public class TestContextRule implements MethodRule
 
     /**
      * Returns a handler to manipulate the project created with the given name.
-     * 
+     *
      * @param projectName the project name
      * @return a handler for the project
      * @throws IllegalArgumentException if no project exists with the given name
@@ -199,7 +199,7 @@ public class TestContextRule implements MethodRule
 
     private StatementInContext currentStatement()
     {
-        checkState(currentStatement != null, "No context defined. Are you accessing this rule from outside a test method? or from one that has no Context annotation?");
+        checkArgument(currentStatement != null, "No context defined. Are you accessing this rule from outside a test method? or from one that has no Context annotation?");
         return currentStatement;
     }
 
@@ -211,7 +211,7 @@ public class TestContextRule implements MethodRule
     /**
      * Returns assertions that can be made on the compilation unit having the
      * given name.
-     * 
+     *
      * @param cuName the name of the compilation unit
      * @return assertions for the compilation unit
      * @throws IllegalArgumentException if no compilation unit exists with the

@@ -1,6 +1,5 @@
 package org.moreunit.core.resources;
 
-import static com.google.common.collect.Lists.asList;
 import static org.fest.assertions.Assertions.assertThat;
 
 import java.util.List;
@@ -28,7 +27,7 @@ public class EclipseResourcesTest extends ResourcesTest
     @Override
     protected void assertContainsFiles(Project project, String... fileNames)
     {
-        super.assertContainsFiles(project, asList(".project", fileNames).toArray(new String[0]));
+        super.assertContainsFiles(project, List.of(".project", fileNames).toArray(new String[0]));
     }
 
     @Override

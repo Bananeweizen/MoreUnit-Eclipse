@@ -1,6 +1,6 @@
 package org.moreunit.test.workspace;
 
-import static com.google.common.base.Preconditions.checkState;
+import static org.moreunit.core.util.Preconditions.checkArgument;
 
 import java.util.regex.Pattern;
 
@@ -32,7 +32,7 @@ public class CompilationUnitHandler implements ElementHandler<ICompilationUnit, 
 
     public String getInitialSource()
     {
-        checkState(source != null, "This compilation was not initially created by your test, therefore it has no initial source.");
+        checkArgument(source != null, "This compilation was not initially created by your test, therefore it has no initial source.");
         return source.getSource();
     }
 
